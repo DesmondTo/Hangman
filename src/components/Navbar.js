@@ -16,6 +16,7 @@ function Navbar(props) {
     <AppBar position="static" elevation={0}>
       <Toolbar>
         <IconButton onClick={() => navigate("/")}>
+          Hangman
           <ManIcon />
         </IconButton>
         <span style={{ flexGrow: 1 }}></span>
