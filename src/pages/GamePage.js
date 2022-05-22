@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 import { isAlphabet } from "../helper/StringHelper";
-import LetterGuess from "../components/LetterGuess";
-import Keyboard from "../components/Keyboard";
+import GamePageContainer from "../components/GamePageContainer";
+import UserInputSection from "../components/UserInputSection";
+import HangmanDisplaySection from "../components/HangmanDisplaySection";
 
 const RANDOM_WORD_GENERATOR_URL = "https://random-word-api.herokuapp.com/word";
 
@@ -55,7 +56,7 @@ function GamePage() {
     (event) => {
       const IsKeyUsed = (key) => usedKeys.includes(key);
       const isWon = correctGuessCount >= word.length;
-      const isLost = wrongGuessCount >= 6;
+      const isLost = wrongGuessCount >= 8;
       // Reveal the correct guess, if any.
       const handleCorrectGuess = (guessKey) =>
         setGuesses(
@@ -99,32 +100,22 @@ function GamePage() {
   }, [keyPressedHandler]);
 
   return (
-    <div>
-      <p>Random word generate: {word}</p>
-      <p>
-        Your attempt:&nbsp;
-        {guesses.map((guess, index) => (
-          <LetterGuess
-            key={index}
-            letter={guess.letter}
-            reveal={guess.reveal}
-          />
-        ))}
-      </p>
-      <p>
-        Wrong guesses:&nbsp;
-        {wrongGuesses.map((wrongGuess, index) => (
-          <span key={index}>{wrongGuess}, </span>
-        ))}
-      </p>
-      <Keyboard onClickHandler={keyPressedHandler} usedKeys={usedKeys} />
-      {word.length > 0 && correctGuessCount >= word.length && (
-        <p style={{ color: "green" }}>You won!</p>
-      )}
-      {wrongGuessCount >= 6 && <p style={{ color: "red" }}>You lose!</p>}
-      <br />
-      <button onClick={(e) => startGameHandler(e)}>Play</button>
-    </div>
+    <GamePageContainer
+      userInputSection={
+        <UserInputSection
+          word={word}
+          guesses={guesses}
+          keyPressedHandler={keyPressedHandler}
+          usedKeys={usedKeys}
+        />
+      }
+      hangmanDisplaySection={
+        <HangmanDisplaySection
+          wrongGuesses={wrongGuesses}
+          startGameHandler={startGameHandler}
+        />
+      }
+    />
   );
 }
 

@@ -1,8 +1,6 @@
-@media screen and (max-width: 780px) {
-  .alpha-button {
-    display: "inline-block";
-    padding: 20%;
-    min-height: 0;
-    min-width: 0;
-  }
+.alpha-button {
+  display: "inline-block";
+  padding: 20%;
+  min-height: 0;
+  min-width: 0;
 }
