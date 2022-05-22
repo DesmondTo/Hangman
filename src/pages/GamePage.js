@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
-import LetterGuess from "../components/LetterGuess";
 import { isAlphabet } from "../helper/StringHelper";
+import LetterGuess from "../components/LetterGuess";
+import Keyboard from "../components/Keyboard";
 
 const RANDOM_WORD_GENERATOR_URL = "https://random-word-api.herokuapp.com/word";
 
@@ -50,8 +51,8 @@ function GamePage() {
       });
   }
 
-  useEffect(() => {
-    function keyPressedHandler(event) {
+  const keyPressedHandler = useCallback(
+    (event) => {
       const IsKeyUsed = (key) => usedKeys.includes(key);
       const isWon = correctGuessCount >= word.length;
       const isLost = wrongGuessCount >= 6;
@@ -66,7 +67,7 @@ function GamePage() {
             return { ...guess };
           })
         );
-      
+
       // Do nothing if the key is used once.
       // Else, proceed with the key pressed.
       if (IsKeyUsed(event.key)) return;
@@ -85,14 +86,17 @@ function GamePage() {
           setWrongGuessCount((count) => count + 1);
         }
       }
-    }
+    },
+    [guesses, usedKeys, correctGuessCount, wrongGuessCount, word.length]
+  );
 
+  useEffect(() => {
     document.addEventListener("keydown", keyPressedHandler);
 
     return function cleanup() {
       document.removeEventListener("keydown", keyPressedHandler);
     };
-  }, [guesses, usedKeys, correctGuessCount, wrongGuessCount, word.length]);
+  }, [keyPressedHandler]);
 
   return (
     <div>
@@ -113,10 +117,12 @@ function GamePage() {
           <span key={index}>{wrongGuess}, </span>
         ))}
       </p>
+      <Keyboard onClickHandler={keyPressedHandler} usedKeys={usedKeys} />
       {word.length > 0 && correctGuessCount >= word.length && (
         <p style={{ color: "green" }}>You won!</p>
       )}
       {wrongGuessCount >= 6 && <p style={{ color: "red" }}>You lose!</p>}
+      <br />
       <button onClick={(e) => startGameHandler(e)}>Play</button>
     </div>
   );
