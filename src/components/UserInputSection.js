@@ -3,7 +3,7 @@ import React from "react";
 import Keyboard from "../components/Keyboard";
 import LetterGuess from "../components/LetterGuess";
 
-function UserInputSection({ word, guesses, keyPressedHandler, usedKeys }) {
+function UserInputSection({ definition, guesses, keyPressedHandler, usedKeys }) {
   return (
     <section
       style={{
@@ -13,7 +13,7 @@ function UserInputSection({ word, guesses, keyPressedHandler, usedKeys }) {
         alignItems: "center",
       }}
     >
-      <p>Random word generate: {word}</p>
+      {(definition !== "") && <p>({definition})</p>}
       <LetterGuess guesses={guesses} />
       <br />
       <br />

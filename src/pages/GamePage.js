@@ -6,10 +6,11 @@ import UserInputSection from "../components/UserInputSection";
 import HangmanDisplaySection from "../components/HangmanDisplaySection";
 import EndGameBackdrop from "../components/EndGameBackdrop";
 
-const RANDOM_WORD_GENERATOR_URL = "https://random-word-api.herokuapp.com/word";
+const RANDOM_WORD_GENERATOR_URL = "https://random-words-api.vercel.app/word";
 
 function GamePage() {
   const [word, setWord] = useState("");
+  const [definition, setDefinition] = useState("");
   const [usedKeys, setUsedKeys] = useState([]);
   const [guesses, setGuesses] = useState([]);
   const [wrongGuesses, setWrongGuesses] = useState([]);
@@ -46,9 +47,11 @@ function GamePage() {
       .then((response) => response.json())
       .then((data) => {
         initializeGameStates();
-        const wordGenerated = data[0];
+        const wordGenerated = data[0].word;
+        const definition = data[0].definition.slice(0, -2);
         setWord(wordGenerated);
         initializeGuesses(wordGenerated);
+        setDefinition(definition);
       });
   }
 
@@ -104,7 +107,7 @@ function GamePage() {
       <GamePageContainer
         userInputSection={
           <UserInputSection
-            word={word}
+            definition={definition}
             guesses={guesses}
             keyPressedHandler={keyPressedHandler}
             usedKeys={usedKeys}
