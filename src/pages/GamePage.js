@@ -4,6 +4,7 @@ import { isAlphabet } from "../helper/StringHelper";
 import GamePageContainer from "../components/GamePageContainer";
 import UserInputSection from "../components/UserInputSection";
 import HangmanDisplaySection from "../components/HangmanDisplaySection";
+import EndGameBackdrop from "../components/EndGameBackdrop";
 
 const RANDOM_WORD_GENERATOR_URL = "https://random-word-api.herokuapp.com/word";
 
@@ -100,22 +101,29 @@ function GamePage() {
   }, [keyPressedHandler]);
 
   return (
-    <GamePageContainer
-      userInputSection={
-        <UserInputSection
-          word={word}
-          guesses={guesses}
-          keyPressedHandler={keyPressedHandler}
-          usedKeys={usedKeys}
-        />
-      }
-      hangmanDisplaySection={
-        <HangmanDisplaySection
-          wrongGuesses={wrongGuesses}
-          startGameHandler={startGameHandler}
-        />
-      }
-    />
+    <>
+      <GamePageContainer
+        userInputSection={
+          <UserInputSection
+            word={word}
+            guesses={guesses}
+            keyPressedHandler={keyPressedHandler}
+            usedKeys={usedKeys}
+          />
+        }
+        hangmanDisplaySection={
+          <HangmanDisplaySection
+            wrongGuesses={wrongGuesses}
+            startGameHandler={startGameHandler}
+          />
+        }
+      />
+      <EndGameBackdrop
+        isWon={word.length > 0 && correctGuessCount >= word.length}
+        isLost={wrongGuessCount >= 8}
+        replayGameHandler={startGameHandler}
+      />
+    </>
   );
 }
 
