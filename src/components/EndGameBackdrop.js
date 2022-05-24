@@ -12,7 +12,6 @@ function EndGameBackdrop({ isWon, isLost, replayGameHandler }) {
     <Backdrop
       sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
       open={isWon || isLost}
-      onClick={replayGameHandler}
     >
       <Card>
         <CardContent sx={{ textAlign: "center" }}>

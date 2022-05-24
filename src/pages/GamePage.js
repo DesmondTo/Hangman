@@ -42,11 +42,10 @@ function GamePage() {
     // It prevents user from accidentally pressing SPACE or ENTER
     // which restarts the game.
     event.target.blur();
-
-    initializeGameStates();
     fetch(RANDOM_WORD_GENERATOR_URL)
       .then((response) => response.json())
       .then((data) => {
+        initializeGameStates();
         const wordGenerated = data[0];
         setWord(wordGenerated);
         initializeGuesses(wordGenerated);
