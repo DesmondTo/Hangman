@@ -1,0 +1,7 @@
+.correct-guess-letter {
+  display: "inline-block";
+  padding: 20%;
+  min-height: 0;
+  min-width: 0;
+  text-align: center;
+}

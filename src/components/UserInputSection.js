@@ -1,27 +1,22 @@
 import React from "react";
 
-import LetterGuess from "../components/LetterGuess";
 import Keyboard from "../components/Keyboard";
+import LetterGuess from "../components/LetterGuess";
 
-function UserInputSection({
-  word,
-  guesses,
-  keyPressedHandler,
-  usedKeys,
-}) {
+function UserInputSection({ word, guesses, keyPressedHandler, usedKeys }) {
   return (
-    <section>
+    <section
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <p>Random word generate: {word}</p>
-      <p>
-        Your attempt:&nbsp;
-        {guesses.map((guess, index) => (
-          <LetterGuess
-            key={index}
-            letter={guess.letter}
-            reveal={guess.reveal}
-          />
-        ))}
-      </p>
+      <LetterGuess guesses={guesses} />
+      <br />
+      <br />
       <Keyboard onClickHandler={keyPressedHandler} usedKeys={usedKeys} />
     </section>
   );
