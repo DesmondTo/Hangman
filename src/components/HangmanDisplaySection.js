@@ -9,6 +9,7 @@ function HangmanDisplaySection({ wrongGuesses, startGameHandler }) {
       <img
         src={`hangman_display/hangman_light_${wrongGuesses.length}.png`}
         alt="Your hangman"
+        style={{ width: "80%", height: "auto" }}
       />
       <p>
         Wrong guesses:&nbsp;
