@@ -6,7 +6,10 @@ import Typography from "@mui/material/Typography";
 function HangmanDisplaySection({ wrongGuesses, startGameHandler }) {
   return (
     <section>
-      <h1>Insert Hangman Here</h1>
+      <img
+        src={`hangman_display/hangman_light_${wrongGuesses.length}.png`}
+        alt="Your hangman"
+      />
       <p>
         Wrong guesses:&nbsp;
         {wrongGuesses.map((wrongGuess, index) => (

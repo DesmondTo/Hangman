@@ -120,7 +120,7 @@ function GamePage() {
       />
       <EndGameBackdrop
         isWon={word.length > 0 && correctGuessCount >= word.length}
-        isLost={wrongGuessCount >= 8}
+        isLost={wrongGuessCount >= 7}
         replayGameHandler={startGameHandler}
       />
     </>
