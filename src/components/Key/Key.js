@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import "./Key.css";
+import styles from "./Key.module.css";
 
 function Key({ value, onClickHandler, isDisabled }) {
   const setKeyIsDisabled = useState(isDisabled)[1]; // Only setState function is used.
@@ -17,7 +17,7 @@ function Key({ value, onClickHandler, isDisabled }) {
     <Button
       variant="contained"
       onClick={keyClickHandler}
-      className="alpha-button"
+      className={styles["alpha-button"]}
       disabled={isDisabled}
     >
       <Typography>{value}</Typography>

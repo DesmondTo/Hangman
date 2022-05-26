@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
-import "./LetterGuess.css";
+import styles from "./LetterGuess.module.css";
 
 function LetterGuess({ guesses }) {
   return (
@@ -20,7 +20,10 @@ function LetterGuess({ guesses }) {
           {guess.letter === " " ? (
             <span>&nbsp;</span>
           ) : guess.reveal ? (
-            <Button variant="contained" className="correct-guess-letter">
+            <Button
+              variant="contained"
+              className={styles["correct-guess-letter"]}
+            >
               <Typography>{guess.letter}</Typography>
             </Button>
           ) : (
