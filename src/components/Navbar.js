@@ -7,7 +7,6 @@ import IconButton from "@mui/material/IconButton";
 import ManIcon from "@mui/icons-material/Man";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import HelpIcon from "@mui/icons-material/Help";
 
 function Navbar(props) {
   let navigate = useNavigate();
