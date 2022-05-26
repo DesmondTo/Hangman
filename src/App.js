@@ -20,8 +20,8 @@ function App(props) {
       <PageContainer>
         <Suspense fallback={<LoadingPage />}>
           <Routes>
-            <Route path="/" element={<GamePage />} />
-            <Route path="game-rule" element={<GameRulePage />} />
+            <Route path="/" element={<GameRulePage />} />
+            <Route path="game-page" element={<GamePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
