@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 function NotFoundPage(props) {
   let navigate = useNavigate();
+
   return (
     <div>
-      <h1> 
-        Error 404 : Not Found 
-      </h1>
+      <h1>Error 404 : Not Found</h1>
       <p>
-        <button onClick={(e) => navigate(`/pages/GameRulePage`)}>Home</button>
+        <button onClick={() => navigate("/")}>Home</button>
       </p>
     </div>
   );
