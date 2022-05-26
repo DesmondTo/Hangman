@@ -12,7 +12,7 @@ function NotFoundPage(props) {
     <div>
       <h1>Error 404 : Not Found</h1>
       <p>
-        <Button onClick={() => navigate("/")}>
+        <Button variant="contained" onClick={() => navigate("/")}>
           <Typography>Home</Typography>
         </Button>
       </p>
