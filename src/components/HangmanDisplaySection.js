@@ -9,16 +9,10 @@ function HangmanDisplaySection({ wrongGuesses, startGameHandler }) {
       <img
         src={`hangman_display/hangman_light_${wrongGuesses.length}.png`}
         alt="Your hangman"
-        style={{ width: "80%", height: "auto" }}
+        style={{ width: "80%", height: "auto", margin: "5%" }}
       />
-      <p>
-        Wrong guesses:&nbsp;
-        {wrongGuesses.map((wrongGuess, index) => (
-          <span key={index}>{wrongGuess}, </span>
-        ))}
-      </p>
       <Button variant="contained" onClick={startGameHandler}>
-        <Typography>Start Game</Typography>
+        <Typography>Restart</Typography>
       </Button>
     </section>
   );
