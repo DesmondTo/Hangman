@@ -8,9 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 root.render(
-  <React.StrictMode>
     <ThemeWrapper colorModeContext={ColorModeContext}>
       <App colorModeContext={ColorModeContext} />
     </ThemeWrapper>
-  </React.StrictMode>
 );

@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
-import LetterGuess from "../components/LetterGuess";
 import { isAlphabet } from "../helper/StringHelper";
+import GamePageContainer from "../components/GamePageContainer";
+import UserInputSection from "../components/UserInputSection";
+import HangmanDisplaySection from "../components/HangmanDisplaySection";
+import EndGameBackdrop from "../components/EndGameBackdrop";
 
-const RANDOM_WORD_GENERATOR_URL = "https://random-word-api.herokuapp.com/word";
+const RANDOM_WORD_GENERATOR_URL = "https://random-words-api.vercel.app/word";
 
 function GamePage() {
   const [word, setWord] = useState("");
+  const [definition, setDefinition] = useState("");
   const [usedKeys, setUsedKeys] = useState([]);
   const [guesses, setGuesses] = useState([]);
   const [wrongGuesses, setWrongGuesses] = useState([]);
@@ -34,27 +38,32 @@ function GamePage() {
     );
   }
 
+  const generateWordAndDefinition = useCallback(() => {
+    fetch(RANDOM_WORD_GENERATOR_URL)
+      .then((response) => response.json())
+      .then((data) => {
+        initializeGameStates();
+        const wordGenerated = data[0].word.toLowerCase();
+        const definition = data[0].definition.slice(0, -2);
+        setWord(wordGenerated);
+        initializeGuesses(wordGenerated);
+        setDefinition(definition);
+      });
+  }, []);
+
   function startGameHandler(event) {
     // Unfocus button after click.
     // It prevents user from accidentally pressing SPACE or ENTER
     // which restarts the game.
-    event.target.blur();
-
-    initializeGameStates();
-    fetch(RANDOM_WORD_GENERATOR_URL)
-      .then((response) => response.json())
-      .then((data) => {
-        const wordGenerated = data[0];
-        setWord(wordGenerated);
-        initializeGuesses(wordGenerated);
-      });
+    if (event !== undefined) event.target.blur();
+    generateWordAndDefinition();
   }
 
-  useEffect(() => {
-    function keyPressedHandler(event) {
+  const keyPressedHandler = useCallback(
+    (event) => {
       const IsKeyUsed = (key) => usedKeys.includes(key);
       const isWon = correctGuessCount >= word.length;
-      const isLost = wrongGuessCount >= 6;
+      const isLost = wrongGuessCount >= 8;
       // Reveal the correct guess, if any.
       const handleCorrectGuess = (guessKey) =>
         setGuesses(
@@ -66,7 +75,7 @@ function GamePage() {
             return { ...guess };
           })
         );
-      
+
       // Do nothing if the key is used once.
       // Else, proceed with the key pressed.
       if (IsKeyUsed(event.key)) return;
@@ -85,40 +94,41 @@ function GamePage() {
           setWrongGuessCount((count) => count + 1);
         }
       }
-    }
+    },
+    [guesses, usedKeys, correctGuessCount, wrongGuessCount, word.length]
+  );
 
+  useEffect(() => generateWordAndDefinition(), [generateWordAndDefinition]);
+
+  useEffect(() => {
     document.addEventListener("keydown", keyPressedHandler);
 
     return function cleanup() {
       document.removeEventListener("keydown", keyPressedHandler);
     };
-  }, [guesses, usedKeys, correctGuessCount, wrongGuessCount, word.length]);
+  }, [keyPressedHandler]);
 
   return (
-    <div>
-      <p>Random word generate: {word}</p>
-      <p>
-        Your attempt:&nbsp;
-        {guesses.map((guess, index) => (
-          <LetterGuess
-            key={index}
-            letter={guess.letter}
-            reveal={guess.reveal}
+    <>
+      <GamePageContainer
+        userInputSection={
+          <UserInputSection
+            definition={definition}
+            guesses={guesses}
+            keyPressedHandler={keyPressedHandler}
+            usedKeys={usedKeys}
           />
-        ))}
-      </p>
-      <p>
-        Wrong guesses:&nbsp;
-        {wrongGuesses.map((wrongGuess, index) => (
-          <span key={index}>{wrongGuess}, </span>
-        ))}
-      </p>
-      {word.length > 0 && correctGuessCount >= word.length && (
-        <p style={{ color: "green" }}>You won!</p>
-      )}
-      {wrongGuessCount >= 6 && <p style={{ color: "red" }}>You lose!</p>}
-      <button onClick={(e) => startGameHandler(e)}>Play</button>
-    </div>
+        }
+        hangmanDisplaySection={
+          <HangmanDisplaySection wrongGuesses={wrongGuesses} answer={word} />
+        }
+      />
+      <EndGameBackdrop
+        isWon={word.length > 0 && correctGuessCount >= word.length}
+        isLost={wrongGuessCount >= 7}
+        replayGameHandler={startGameHandler}
+      />
+    </>
   );
 }
 
