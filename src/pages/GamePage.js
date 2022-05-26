@@ -43,7 +43,7 @@ function GamePage() {
       .then((response) => response.json())
       .then((data) => {
         initializeGameStates();
-        const wordGenerated = data[0].word;
+        const wordGenerated = data[0].word.toLowerCase();
         const definition = data[0].definition.slice(0, -2);
         setWord(wordGenerated);
         initializeGuesses(wordGenerated);
