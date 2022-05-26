@@ -10,7 +10,6 @@ function GamePageContainer({ userInputSection, hangmanDisplaySection }) {
       justifyContent="space-evenly"
       alignItems="center"
       wrap="wrap-reverse"
-      sx={{ height: "80vh" }}
     >
       <Grid item xs={12} sm={12} md={5} textAlign="center">
         {userInputSection}
