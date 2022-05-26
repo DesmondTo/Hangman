@@ -120,10 +120,7 @@ function GamePage() {
           />
         }
         hangmanDisplaySection={
-          <HangmanDisplaySection
-            wrongGuesses={wrongGuesses}
-            startGameHandler={startGameHandler}
-          />
+          <HangmanDisplaySection wrongGuesses={wrongGuesses} answer={word} />
         }
       />
       <EndGameBackdrop
