@@ -20,7 +20,7 @@ function HangmanDisplaySection({ wrongGuesses, answer }) {
           <img
             src={`hangman_display/hangman_light_${wrongGuesses.length}.png`}
             alt="Your hangman"
-            style={{ width: "60%", height: "auto", margin: "5%" }}
+            style={{ width: "90%", height: "auto", margin: "5%" }}
           />
         </Grid>
         <Grid item>
