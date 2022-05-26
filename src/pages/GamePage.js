@@ -38,11 +38,7 @@ function GamePage() {
     );
   }
 
-  function startGameHandler(event) {
-    // Unfocus button after click.
-    // It prevents user from accidentally pressing SPACE or ENTER
-    // which restarts the game.
-    event.target.blur();
+  const generateWordAndDefinition = useCallback(() => {
     fetch(RANDOM_WORD_GENERATOR_URL)
       .then((response) => response.json())
       .then((data) => {
@@ -53,6 +49,14 @@ function GamePage() {
         initializeGuesses(wordGenerated);
         setDefinition(definition);
       });
+  }, []);
+
+  function startGameHandler(event) {
+    // Unfocus button after click.
+    // It prevents user from accidentally pressing SPACE or ENTER
+    // which restarts the game.
+    if (event !== undefined) event.target.blur();
+    generateWordAndDefinition();
   }
 
   const keyPressedHandler = useCallback(
@@ -93,6 +97,8 @@ function GamePage() {
     },
     [guesses, usedKeys, correctGuessCount, wrongGuessCount, word.length]
   );
+
+  useEffect(() => generateWordAndDefinition(), [generateWordAndDefinition]);
 
   useEffect(() => {
     document.addEventListener("keydown", keyPressedHandler);
