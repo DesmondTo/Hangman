@@ -1,7 +1,7 @@
 import React from "react";
 
 import Keyboard from "../components/Keyboard";
-import LetterGuess from "../components/LetterGuess";
+import LetterGuess from "../components/LetterGuess/LetterGuess";
 
 function UserInputSection({ definition, guesses, keyPressedHandler, usedKeys }) {
   return (

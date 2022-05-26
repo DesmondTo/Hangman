@@ -2,7 +2,7 @@ import React from "react";
 
 import Grid from "@mui/material/Grid";
 
-import Key from "./Key";
+import Key from "./Key/Key";
 
 function Keyboard({ onClickHandler, usedKeys }) {
   const alphaKeysRows = [
