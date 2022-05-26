@@ -19,9 +19,9 @@ function EndGameBackdrop({ isWon, isLost, replayGameHandler }) {
             You
             {`${
               isWon
-                ? " won!"
+                ? " Won!"
                 : isLost
-                ? " lost!"
+                ? " Lost!"
                 : " are in the middle of the game."
             }
             `}
@@ -30,7 +30,7 @@ function EndGameBackdrop({ isWon, isLost, replayGameHandler }) {
             {isWon
               ? "Man's life has been spared."
               : isLost
-              ? "Man's dead."
+              ? "Man was hanged."
               : "Man's life in your hand now!"}
           </Typography>
         </CardContent>
