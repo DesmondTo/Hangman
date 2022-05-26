@@ -1,7 +1,15 @@
 import React from "react";
 
+import CircularProgress from "@mui/material/CircularProgress";
+import Typography from "@mui/material/Typography";
+
 function LoadingPage(props) {
-  return <div>// TODO: Implement a Loading Page.</div>;
+  return (
+    <>
+      <CircularProgress color="inherit" />
+      <Typography>Loading</Typography>
+    </>
+  );
 }
 
 export default LoadingPage;
