@@ -1,70 +1,173 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="public\Hangman Logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-## Available Scripts
+<h3 align="center">Hangman</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    An awesome Hangman game!
+    <br />
+    <a href="https://github.com/DesmondTo/Hangman"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://tiktok-youth-camp-hangman.herokuapp.com/">View Demo</a>
+  </p>
+</div>
 
-### `npm start`
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- ABOUT THE PROJECT -->
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<div id="#about-the-project"></div>
 
-### `npm test`
+## About The Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<div align="center">
 
-### `npm run build`
+ <img src="public\Hangman Sample.png" alt="Main Page" width="800" height="500">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</div>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Here's a frontend project using languages and frameworks learnt during TikTok Youth Camp 2022 to implement a classic Hangman webapp.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### `npm run eject`
+<div id="#built-with"></div>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Built With
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [React.js](https://reactjs.org/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- GETTING STARTED -->
 
-## Learn More
+<div id="#getting-started"></div>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repo
+   ```sh
+   git clone https://github.com/DesmondTo/Hangman
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run the web app
+   ```sh
+   npm start
+   ```
 
-### Code Splitting
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<div id="#usage"></div>
 
-### Analyzing the Bundle Size
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br />
 
-### Making a Progressive Web App
+### Game Rule Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<br />
+<div align="center">
 
-### Advanced Configuration
+ <img src="public\Game Rules Page.png" alt="Game Rule Page" width="900" height="500">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+</div>
+<br />
 
-### Deployment
+### Loading Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<br />
+<div align="center">
 
-### `npm run build` fails to minify
+ <img src="public\Loading Page.png" alt="Loading Page" width="900" height="500">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</div>
+<br />
+
+### Game Page
+
+<br />
+<div align="center">
+
+ <img src="public\Game Page.png" alt="Game Page" width="900" height="500">
+
+</div>
+<br />
+
+### Game Page in action
+
+<br />
+<div align="center">
+
+ <img src="public\Game Page 2.png" alt="Game Page in action" width="900" height="500">
+
+</div>
+<br />
+
+### Reveal Answer
+
+<br />
+<div align="center">
+
+ <img src="public\Answer Page.png" alt="Reveal Answer" width="900" height="500">
+
+</div>
+<br />
+
+### Game Over Page
+
+<br />
+<div align="center">
+
+ <img src="public\Game Over Page.png" alt="Game Over Page" width="900" height="500">
+
+</div>
+<br />
+
+### Dark Mode
+
+<br />
+<div align="center">
+
+ <img src="public\Game Dark Mode.png" alt="Dark Mode" width="900" height="500">
+
+</div>
+<br />
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+<div id="#acknowledgements"></div>
+
+## Acknowledgments
+
+- [Mui](https://mui.com/)
+- [React Loading Spin](https://www.npmjs.com/package/react-loading-spin)
+- [React](https://reactjs.org/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
