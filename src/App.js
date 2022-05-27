@@ -21,7 +21,7 @@ function App(props) {
         <Suspense fallback={<LoadingPage />}>
           <Routes>
             <Route path="/" element={<GameRulePage />} />
-            <Route path="game-page" element={<GamePage />} />
+            <Route path="game-page" element={<GamePage theme={theme} />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

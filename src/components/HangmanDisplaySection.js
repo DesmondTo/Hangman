@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import RevealAnswerBackdrop from "./RevealAnswerBackdrop";
 
-function HangmanDisplaySection({ wrongGuesses, answer }) {
+function HangmanDisplaySection({ theme, wrongGuesses, answer }) {
   const [showAnswer, setShowAnswer] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ function HangmanDisplaySection({ wrongGuesses, answer }) {
       >
         <Grid item>
           <img
-            src={`hangman_display/hangman_light_${
+            src={`hangman_display/hangman_${theme.palette.mode}_${
               wrongGuesses.length >= 8 ? 7 : wrongGuesses.length
             }.png`}
             alt="Your hangman"

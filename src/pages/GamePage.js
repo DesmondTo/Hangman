@@ -8,7 +8,7 @@ import EndGameBackdrop from "../components/EndGameBackdrop";
 
 const RANDOM_WORD_GENERATOR_URL = "https://random-words-api.vercel.app/word";
 
-function GamePage() {
+function GamePage({ theme }) {
   const [word, setWord] = useState("");
   const [definition, setDefinition] = useState("");
   const [usedKeys, setUsedKeys] = useState([]);
@@ -120,7 +120,11 @@ function GamePage() {
           />
         }
         hangmanDisplaySection={
-          <HangmanDisplaySection wrongGuesses={wrongGuesses} answer={word} />
+          <HangmanDisplaySection
+            theme={theme}
+            wrongGuesses={wrongGuesses}
+            answer={word}
+          />
         }
       />
       <EndGameBackdrop
