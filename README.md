@@ -154,7 +154,7 @@ Here's a frontend project using languages and frameworks learnt during TikTok Yo
 <br />
 <div align="center">
 
- <img src="public\Game Dark Mode.png" alt="Dark Mode" width="900" height="500">
+ <img src="public\New Dark Mode.png" alt="Dark Mode" width="900" height="500">
 
 </div>
 <br />
