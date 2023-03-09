@@ -7,6 +7,49 @@ import HangmanDisplaySection from "../components/HangmanDisplaySection";
 import EndGameBackdrop from "../components/EndGameBackdrop";
 
 const RANDOM_WORD_GENERATOR_URL = "https://random-words-api.vercel.app/word";
+const WORDS = [
+  {
+    word: "Abacus",
+    definition: "A manual device used to perform arithmetic calculations"
+  },
+  {
+    word: "Abyss",
+    definition: "A deep, immeasurable space"
+  },
+  {
+    word: "Benevolent",
+    definition: "Kind, generous, charitable"
+  },
+  {
+    word: "Catastrophe",
+    definition: "A sudden and widespread disaster"
+  },
+  {
+    word: "Debacle",
+    definition: "A sudden and humiliating failure"
+  },
+  {
+    word: "Euphoria",
+    definition: "A feeling or state of intense excitement and happiness"
+  },
+  {
+    word: "Furtive",
+    definition: "Attempting to avoid attention or notice"
+  },
+  {
+    word: "Gregarious",
+    definition: "Fond of company; sociable"
+  },
+  {
+    word: "Hypocrisy",
+    definition: "The practice of claiming to have moral standards or beliefs to which one's own behavior does not conform"
+  },
+  {
+    word: "Impetuous",
+    definition: "Acting or done quickly and without thought or care"
+  }
+];
+
 
 function GamePage({ theme }) {
   const [word, setWord] = useState("");
@@ -39,16 +82,23 @@ function GamePage({ theme }) {
   }
 
   const generateWordAndDefinition = useCallback(() => {
-    fetch(RANDOM_WORD_GENERATOR_URL)
-      .then((response) => response.json())
-      .then((data) => {
-        initializeGameStates();
-        const wordGenerated = data[0].word.toLowerCase();
-        const definition = data[0].definition.slice(0, -2);
-        setWord(wordGenerated);
-        initializeGuesses(wordGenerated);
-        setDefinition(definition);
-      });
+    const randomInt = Math.floor(Math.random() * 10);
+    initializeGameStates();
+    const wordGenerated = WORDS[randomInt].word.toLowerCase();
+    const definition = WORDS[randomInt].definition;
+    setWord(wordGenerated);
+    initializeGuesses(wordGenerated);
+    setDefinition(definition);
+    // fetch(RANDOM_WORD_GENERATOR_URL)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+        // initializeGameStates();
+        // const wordGenerated = data[0].word.toLowerCase();
+        // const definition = data[0].definition.slice(0, -2);
+        // setWord(wordGenerated);
+        // initializeGuesses(wordGenerated);
+        // setDefinition(definition);
+    //   });
   }, []);
 
   function startGameHandler(event) {
